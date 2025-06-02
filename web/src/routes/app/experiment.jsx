@@ -5,9 +5,13 @@ import { useState } from 'react'
  */
 
 function Experiment() {
-  const [variables, setVariables] = useState([])
+  const [variables, setVariables] = useState([
+		{id:"2020", nombre: "Ducha de agua fría", tipo: "boolean", posicion: "entrada"},
+		{id:"2021", nombre: "Felicidad", tipo: "number", posicion: "salida"}
+	])
   const [nombre, setNombre] = useState('')
-  const [tipo, setTipo] = useState('entrada')
+	const [tipo, setTipo] = useState('boolean')
+  const [posicion, setPosicion] = useState('entrada')
   const [showConfirm, setShowConfirm] = useState(false)
 
   const addVariable = () => {
@@ -16,6 +20,7 @@ function Experiment() {
       id: Date.now(),
       nombre: nombre.trim(),
       tipo,
+			posicion,
     }
     setVariables([...variables, nueva])
     setNombre('')
@@ -35,8 +40,31 @@ function Experiment() {
   }
 
   return (
-    <div className="page">
-      <h2>⚙️ Configuración del experimento</h2>
+    <div>
+      <h1 className='center'>Tu experimento</h1>
+
+			<div className='experimentDiagram'>
+				<div className='entrada'>
+					<h3>Entrada</h3>
+					{variables.map((v) => v.posicion == "entrada" && (
+						<div key={v.id}>
+							[{v.tipo}] {v.nombre}{' '}
+							<button onClick={() => deleteVariable(v.id)}>🗑️ Eliminar</button>
+						</div>
+					))}
+				</div>
+				<div className='salida'>	
+					<h3>Salida</h3>
+					{variables.map((v) => v.posicion == "salida" && (
+						<div key={v.id}>
+							[{v.tipo}] {v.nombre}{' '}
+							<button onClick={() => deleteVariable(v.id)}>🗑️ Eliminar</button>
+						</div>
+					))}
+				</div>
+			</div>
+
+
 
       <div>
         <input
@@ -49,17 +77,13 @@ function Experiment() {
           <option value="entrada">Entrada</option>
           <option value="salida">Salida</option>
         </select>
-        <button onClick={addVariable}>➕ Añadir</button>
-      </div>
+				<select value={posicion} onChange={(e) => setTipo(e.target.value)}>
+          <option value="boolean">Sí o No</option>
+          <option value="int">Número</option>
+        </select>
 
-      <ul>
-        {variables.map((v) => (
-          <li key={v.id}>
-            [{v.tipo}] {v.nombre}{' '}
-            <button onClick={() => deleteVariable(v.id)}>🗑️ Eliminar</button>
-          </li>
-        ))}
-      </ul>
+        <button onClick={addVariable}>Añadir</button>
+      </div>
 
       <button onClick={guardarCambios}>💾 Guardar</button>
 
