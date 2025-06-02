@@ -4,7 +4,8 @@ import './App.css';
 
 import Modal from './components/Modal';
 
-function App() {
+// HomePage component (formerly App)
+function HomePage() {
   const [variables, setVariables] = useState([]);
   const [creatingVariables, setCreatingVariables] = useState(true);
 
@@ -28,27 +29,27 @@ function App() {
 
   return (
     <div>
-			<Modal>
-				{creatingVariables ? (
+      <Modal>
+        {creatingVariables ? (
         <div className={`variable-creation ${variables.length != 0 ? "gap": ""}`}>
-					<div className='variable-setter'>
-						<h2>Crea tus variables personalizadas</h2>
-						<input
-							type="text"
-							placeholder="Nombre de la variable"
-							value={newVar.name}
-							onChange={(e) => setNewVar({ ...newVar, name: e.target.value })}
-						/>
-						<select
-							value={newVar.type}
-							onChange={(e) => setNewVar({ ...newVar, type: e.target.value })}
-						>
-							<option value="number">Número</option>
-							<option value="boolean">Sí o No</option>
-						</select>
-						<button onClick={addVariable}>Añadir variable</button>
-						<button onClick={handleSubmitVariables}>Guardar y continuar</button>
-					</div>
+          <div className='variable-setter'>
+            <h2>Crea tus variables personalizadas</h2>
+            <input
+              type="text"
+              placeholder="Nombre de la variable"
+              value={newVar.name}
+              onChange={(e) => setNewVar({ ...newVar, name: e.target.value })}
+            />
+            <select
+              value={newVar.type}
+              onChange={(e) => setNewVar({ ...newVar, type: e.target.value })}
+            >
+              <option value="number">Número</option>
+              <option value="boolean">Sí o No</option>
+            </select>
+            <button onClick={addVariable}>Añadir variable</button>
+            <button onClick={handleSubmitVariables}>Guardar y continuar</button>
+          </div>
           <div className="set-variables">
             {variables.map((v, index) => (
               <div key={index} className='variable'>{v.name} ({v.type})</div>
@@ -80,9 +81,48 @@ function App() {
           </div>
         </div>
       )}
-			</Modal> 
+      </Modal> 
     </div>
   );
+}
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
+import Config from './routes/Config'
+import Analytics from './routes/Analytics'
+import Register from './routes/Register'
+
+function NavBar() {
+  const location = useLocation()
+
+  return (
+    <nav style={{
+      display: 'flex',
+      justifyContent: 'space-around',
+      padding: 10,
+      borderTop: '1px solid #ccc',
+      position: 'fixed',
+      bottom: 0,
+      width: '100%',
+      background: 'white'
+    }}>
+      <Link to="/" style={{ fontWeight: location.pathname === '/' ? 'bold' : 'normal' }}>⚙️ Configuración</Link>
+      <Link to="/analytics" style={{ fontWeight: location.pathname === '/analytics' ? 'bold' : 'normal' }}>📊 Analíticas</Link>
+      <Link to="/register" style={{ fontWeight: location.pathname === '/register' ? 'bold' : 'normal' }}>📝 Registrar</Link>
+    </nav>
+  )
+}
+function App() {
+  return (
+    <Router>
+      <div style={{ paddingBottom: 60 }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+        <NavBar />
+      </div>
+    </Router>
+  )
 }
 
 export default App;
