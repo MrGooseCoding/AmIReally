@@ -1,6 +1,7 @@
-export default function Analytics() {
+
+function Analytics() {
   return (
-    <div className="page">
+    <div>
       <h2>📊 Analíticas</h2>
       <p>Aquí se mostrarán los resultados de tu experimento.</p>
 
@@ -14,3 +15,5 @@ export default function Analytics() {
     </div>
   )
 }
+
+export default Analytics

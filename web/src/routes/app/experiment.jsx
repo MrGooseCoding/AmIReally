@@ -4,7 +4,7 @@ import { useState } from 'react'
  * @typedef {{ id: number, nombre: string, tipo: 'entrada' | 'salida' }} Variable
  */
 
-export default function ExperimentConfig() {
+function Experiment() {
   const [variables, setVariables] = useState([])
   const [nombre, setNombre] = useState('')
   const [tipo, setTipo] = useState('entrada')
@@ -73,3 +73,5 @@ export default function ExperimentConfig() {
     </div>
   )
 }
+
+export default Experiment
