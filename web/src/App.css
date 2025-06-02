@@ -1,42 +1,130 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Paleta de colores */
+:root {
+  --white: #ffffff;
+  --timberwolf: #CCC5b9;
+  --black-olive: #403d39;
+  --eerie-black: #252422;
+  --celestial-blue: #008dd5;
+}
+
+
+body {
+  background: var(--timberwolf);
+  color: var(--eerie-black);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(27,27,27,0.08);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 2.5rem 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.variable-creation,
+.variable-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input,
+select,
+button {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  margin-top: 0.5rem;
+  border: 1px solid var(--timberwolf);
+  background: var(--white);
+  color: var(--eerie-black);
+  transition: border 0.2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input:focus,
+select:focus {
+  outline: none;
+  border: 1.5px solid var(--celestial-blue);
 }
 
-.card {
-  padding: 2em;
+button {
+  cursor: pointer;
+  background-color: var(--celestial-blue);
+  color: var(--white);
+  border: none;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
-.read-the-docs {
-  color: #888;
+button:hover {
+  background-color: var(--black-olive);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.streak,
+.days-left {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--celestial-blue);
+}
+
+.questions {
+  width: 100%;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.question label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--black-olive);
+}
+
+.submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  background: var(--celestial-blue);
+  color: var(--white);
+  font-weight: 600;
+}
+
+h2 {
+  color: var(--black-olive);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
 }
