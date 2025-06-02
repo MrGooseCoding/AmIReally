@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-
-export default function RegisterData() {
+function Log() {
   const [nombre, setNombre] = useState('')
   const [valor, setValor] = useState('')
   const [historial, setHistorial] = useState([])
@@ -48,4 +47,5 @@ export default function RegisterData() {
     </div>
   )
 }
-//           <h2>📊 Seguimiento de variables</h2>
+
+export default Log
