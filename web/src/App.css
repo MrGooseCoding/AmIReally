@@ -8,6 +8,9 @@
   --black-olive: #403d39;
   --eerie-black: #252422;
   --celestial-blue: #008dd5;
+
+	/* Distancias */
+	--distance-medium: 2rem;
 }
 
 
@@ -20,26 +23,44 @@ body {
   padding: 0;
 }
 
-.app-container {
+.Modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
   background: var(--white);
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(27,27,27,0.08);
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 2.5rem 2rem;
+  padding: var(--distance-medium);
   text-align: center;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.variable-creation,
-.variable-tracker {
+.variable-creation {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  flex-direction: row;
   align-items: center;
   width: 100%;
+}
+
+.variable-creation.gap {
+  gap: var(--distance-medium);
+}
+
+
+.variable-tracker {
+}
+
+.variable-setter {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+
+}
+
+.variable {
+
 }
 
 input,
@@ -123,8 +144,8 @@ ul {
 }
 
 h2 {
+	margin: 0;
   color: var(--black-olive);
   font-weight: 600;
-  margin-bottom: 1rem;
   letter-spacing: 0.5px;
 }
