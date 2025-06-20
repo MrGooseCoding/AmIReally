@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useState } from 'react';
-import './../App.css';
+import './../styles/styles.css';
 
 function Modal(props) {
   return (

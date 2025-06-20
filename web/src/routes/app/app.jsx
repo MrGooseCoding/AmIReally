@@ -12,9 +12,9 @@ function App() {
 				</div>
       </div>
       <NavBar items={[
-          ["add-circle", "Experiment", "/app/experiment"],
-          ["join", "Log", "/app/log"],
-          ["person", "Analytics", "/app/analytics"]
+          ["telescope", "Experiment", "/app/experiment"],
+          ["file-tray", "Log", "/app/log"],
+          ["merge", "Analytics", "/app/analytics"]
       ]}/>
     </div>
   )
