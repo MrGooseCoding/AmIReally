@@ -1,11 +1,9 @@
-// App.jsx
 import React, { useState } from 'react';
-import './App.css';
+import './styles/styles.css';
 
-import Modal from './components/Modal';
+import Modal from './components/modal';
 
-// HomePage component (formerly App)
-function HomePage() {
+function App() {
   const [variables, setVariables] = useState([]);
   const [creatingVariables, setCreatingVariables] = useState(true);
 
@@ -84,45 +82,6 @@ function HomePage() {
       </Modal> 
     </div>
   );
-}
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
-import Config from './routes/Config'
-import Analytics from './routes/Analytics'
-import Register from './routes/Register'
-
-function NavBar() {
-  const location = useLocation()
-
-  return (
-    <nav style={{
-      display: 'flex',
-      justifyContent: 'space-around',
-      padding: 10,
-      borderTop: '1px solid #ccc',
-      position: 'fixed',
-      bottom: 0,
-      width: '100%',
-      background: 'white'
-    }}>
-      <Link to="/" style={{ fontWeight: location.pathname === '/' ? 'bold' : 'normal' }}>⚙️ Configuración</Link>
-      <Link to="/analytics" style={{ fontWeight: location.pathname === '/analytics' ? 'bold' : 'normal' }}>📊 Analíticas</Link>
-      <Link to="/register" style={{ fontWeight: location.pathname === '/register' ? 'bold' : 'normal' }}>📝 Registrar</Link>
-    </nav>
-  )
-}
-function App() {
-  return (
-    <Router>
-      <div style={{ paddingBottom: 60 }}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-        <NavBar />
-      </div>
-    </Router>
-  )
 }
 
 export default App;
