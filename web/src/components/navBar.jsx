@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './../styles/styles.css'
 import { useNavigate } from "react-router-dom";
+import Icon from './icon';
 
 function NavBar({ items }) {
     const [ selected, setSelected ] = useState()
@@ -20,6 +21,7 @@ function NavBar({ items }) {
             items.map((v, i, arr) => {
                 const iconType = selected == v[2] ? 'filled' : 'outline'
                 return <div className='item' key={v[2]} id={v[2]} onClick={onClick}>
+										<Icon className='icon' name={`${v[0]}-${iconType}`}/>
                     <div className='name'>{v[1]}</div>
                 </div>
             })
