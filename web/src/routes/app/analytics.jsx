@@ -2,7 +2,7 @@
 function Analytics() {
   return (
     <div>
-      <h2>📊 Analíticas</h2>
+      <h2>Analíticas</h2>
       <p>Aquí se mostrarán los resultados de tu experimento.</p>
 
       <div>

@@ -20,7 +20,7 @@ function Log() {
 
   return (
     <div className="page">
-      <h2>📝 Registro de datos</h2>
+      <h2>Registra hoy</h2>
 
       <input
         type="text"

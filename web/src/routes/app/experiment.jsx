@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Icon from '../../components/icon'
 
 /**
  * @typedef {{ id: number, nombre: string, tipo: 'entrada' | 'salida' }} Variable
@@ -7,7 +8,8 @@ import { useState } from 'react'
 function Experiment() {
   const [variables, setVariables] = useState([
 		{id:"2020", nombre: "Ducha de agua fría", tipo: "boolean", posicion: "entrada"},
-		{id:"2021", nombre: "Felicidad", tipo: "number", posicion: "salida"}
+		{id:"2021", nombre: "Horas de sueño", tipo: "number", posicion: "entrada"},
+		{id:"2022", nombre: "Felicidad", tipo: "number", posicion: "salida"}
 	])
   const [nombre, setNombre] = useState('')
 	const [tipo, setTipo] = useState('boolean')
@@ -39,34 +41,49 @@ function Experiment() {
     alert('Configuración guardada. Recuerda repetir el experimento.')
   }
 
+	useEffect(() => console.log(variables.length), [variables])
+
   return (
     <div>
-      <h1 className='center'>Tu experimento</h1>
+      <h2 className='center'>Tu experimento</h2>
 
 			<div className='experimentDiagram'>
-				<div className='entrada'>
+				<div className='card'>
 					<h3>Entrada</h3>
-					{variables.map((v) => v.posicion == "entrada" && (
-						<div key={v.id}>
-							[{v.tipo}] {v.nombre}{' '}
-							<button onClick={() => deleteVariable(v.id)}>🗑️ Eliminar</button>
+					{variables.filter(v => v.posicion == "entrada").length != 0 &&
+						<div className='wrapper'>
+							{variables.map((v) => v.posicion == "entrada" && (
+								<>
+									<div className="container" key={v.id}>
+										<div className={`tag ${v.tipo == 'boolean' ? 'green' : 'pink'}`}>{v.tipo}</div>
+										<div className='text'>{v.nombre}{' '}</div>
+										<button onClick={() => deleteVariable(v.id)}>-</button>
+									</div>
+								</>
+							))}
 						</div>
-					))}
+					}
 				</div>
-				<div className='salida'>	
+				<Icon name="arrow-right-outline" className={"icon"}/>
+				<div className='card'>
 					<h3>Salida</h3>
-					{variables.map((v) => v.posicion == "salida" && (
-						<div key={v.id}>
-							[{v.tipo}] {v.nombre}{' '}
-							<button onClick={() => deleteVariable(v.id)}>🗑️ Eliminar</button>
+					{variables.filter(v => v.posicion == "salida").length != 0 &&
+						<div className='wrapper'>
+							{variables.map((v) => v.posicion == "salida" && (
+								<>
+									<div className="container" key={v.id}>
+										<div className={`tag ${v.tipo == 'boolean' ? 'green' : 'pink'}`}>{v.tipo}</div>
+										<div className='text'>{v.nombre}{' '}</div>
+										<button onClick={() => deleteVariable(v.id)}>-</button>
+									</div>
+								</>
+							))}
 						</div>
-					))}
+					}
 				</div>
 			</div>
 
-
-
-      <div>
+      <div className='form'>
         <input
           type="text"
           placeholder="Nombre de la variable"

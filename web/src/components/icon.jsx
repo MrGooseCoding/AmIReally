@@ -1,25 +1,28 @@
 import './../styles/styles.css'
-import FileTrayFilled from './../assets/icons/file-tray-filled.svg'
-import FileTrayOutline from './../assets/icons/file-tray-outline.svg'
-import MergeFilled from './../assets/icons/merge-filled.svg'
-import MergeOutline from './../assets/icons/merge-outline.svg'
-import TelescopeFilled from './../assets/icons/telescope-filled.svg'
-import TelescopeOutline from './../assets/icons/telescope-outline.svg'
+import FileTrayFilled from './../assets/icons/file-tray-filled.svg?react'
+import FileTrayOutline from './../assets/icons/file-tray-outline.svg?react'
+import MergeFilled from './../assets/icons/merge-filled.svg?react'
+import MergeOutline from './../assets/icons/merge-outline.svg?react'
+import TelescopeFilled from './../assets/icons/telescope-filled.svg?react'
+import TelescopeOutline from './../assets/icons/telescope-outline.svg?react'
+import ArrowRightOutline from './../assets/icons/arrow-right-outline.svg?react'
 
 function Icon({ name, color, className}) {
   switch (name) {
     case "file-tray-filled":
-      return <img src={FileTrayFilled} className={`logo ${className}`}/>
+      return <FileTrayFilled className={`logo ${className}`}/>
     case "file-tray-outline":
-      return <img src={FileTrayOutline} className={`logo ${className}`}/>
+      return <FileTrayOutline className={`logo ${className}`}/>
     case "merge-filled":
-      return <img src={MergeFilled} className={`${className}`}/>
+      return <MergeFilled className={`${className}`}/>
     case "merge-outline":
-      return <img src={MergeOutline} className={`${className}`}/> 
+      return <MergeOutline className={`${className}`}/> 
     case "telescope-filled": 
-      return <img src={TelescopeFilled} className={`${className}`}/>
+      return <TelescopeFilled className={`${className}`}/>
     case "telescope-outline":
-      return <img src={TelescopeOutline} className={`${className}`}/>
+      return <TelescopeOutline className={`${className}`}/>
+		case "arrow-right-outline":
+			return <ArrowRightOutline className={`${className}`}/>
   }
 }
 
